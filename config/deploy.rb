@@ -1,49 +1,58 @@
-require "rvm/capistrano"     
-require "bundler/capistrano"             # Load RVM's capistrano plugin.
+# config valid only for Capistrano 3.1
+lock '3.1.0'
 
+set :application, 'fobhg_contacts'
+set :repo_url, 'git@github.com:TrailHacker/fobhg_contacts.git'
 
-# NOTE: To publish the site to production you must manually set staging to false
-# e.g. 'cap deploy -s staging=false'
-set :staging, fetch(:staging, true)
+# Default branch is :master
+# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
-set :rvm_type, :system
-set :rvm_ruby_string, '1.9.3-p286@otrutil'
-set :use_sudo,    false
+# Default deploy_to directory is /var/www/my_app
+set :deploy_to, '/var/www/fobhg_contacts'
 
-set :user,        "deploy"
+# Default value for :scm is :git
+# set :scm, :git
 
-set :scm, :git 
-set :repository,  "git@bitbucket.org:TrailHacker/otrutil.git"
+# Default value for :format is :pretty
+# set :format, :pretty
 
-# When in staging mode, deploy the site to the test directory
-if fetch(:staging)
-  # TODO: configure database settings for staging environment (otrutest)
-  set :application, "otrutest"
-  set :deploy_to, "/var/www/test"
-else
-  set :application, "otrutil"
-  set :deploy_to,   "/var/www/otrutil"
-end
-set :deploy_via, :remote_cache
-set :rails_env, "production"
+# Default value for :log_level is :debug
+# set :log_level, :debug
 
-set :branch, "master"
+# Default value for :pty is false
+# set :pty, true
 
-server "otrutil.com", :web, :app, :db, :primary => true
+# Default value for :linked_files is []
+# set :linked_files, %w{config/database.yml}
 
-set :keep_releases, 5
-set :rvm_install_with_sudo, true
-default_run_options[:pty] = true
+# Default value for linked_dirs is []
+# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
-before "deploy:setup", "rvm:install_rvm"
-before "deploy:setup", "rvm:import_gemset"
-after "deploy:restart", "deploy:cleanup"
-after "deploy:update_code", "deploy:migrate"
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+
+# Default value for keep_releases is 5
+# set :keep_releases, 5
 
 namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      # Your restart mechanism here, for example:
+      # execute :touch, release_path.join('tmp/restart.txt')
+    end
   end
+
+  after :publishing, :restart
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      # within release_path do
+      #   execute :rake, 'cache:clear'
+      # end
+    end
+  end
+
 end
