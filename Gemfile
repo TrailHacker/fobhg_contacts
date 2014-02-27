@@ -26,6 +26,9 @@ group :development do
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
+  gem 'net-ssh', '2.8.0'
+  gem 'capistrano'
+  gem 'capistrano-ext'
 end
 group :development, :test do
   gem 'factory_girl_rails'

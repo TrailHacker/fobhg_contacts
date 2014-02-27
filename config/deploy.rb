@@ -34,18 +34,13 @@ set :deploy_to, '/var/www/fobhg_contacts'
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-before "deploy:setup", "rvm:install_rvm"
-before "deploy:setup", "rvm:import_gemset"
-after "deploy:restart", "deploy:cleanup"
-after "deploy:update_code", "deploy:migrate"
-
 namespace :deploy do
 
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
-      execute :touch, release_path.join('tmp/restart.txt')
+      run "touch #{current_path}/tmp/restart.txt"
     end
   end
 
