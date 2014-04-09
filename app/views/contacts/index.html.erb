@@ -1,3 +1,10 @@
+<div class="pull-right">
+  <%= form_tag import_path, multipart: true, :class => "form form-inline" do %>
+    <%= file_field_tag :file, :class => "form-control" %>
+    <%= submit_tag "Import CSV", :class => "btn btn-success" %>
+  <% end %>
+</div>
+
 <h1>Listing Contacts</h1>
 
 <table class="table table-hover">

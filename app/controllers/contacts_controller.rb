@@ -7,6 +7,10 @@ class ContactsController < ApplicationController
     @contacts = Contact.all
   end
 
+  def import
+    Contact.import(params[:file])
+  end
+
   # GET /contacts/1
   # GET /contacts/1.json
   def show
