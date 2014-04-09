@@ -4,8 +4,7 @@ FobhgContacts::Application.routes.draw do
 
   resources :users
   resources :contacts  
-  get '/import', :to => 'contacts#import'
-
+  post '/import', :to => 'contacts#import'
 
   root :to => "home#index"
 end

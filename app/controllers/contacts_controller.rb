@@ -9,6 +9,9 @@ class ContactsController < ApplicationController
 
   def import
     Contact.import(params[:file])
+    respond_to do |format|
+      format.html { redirect_to import_path, :notice => "Successfully imported contacts." }
+    end
   end
 
   # GET /contacts/1
