@@ -4,6 +4,9 @@ class Contact < ActiveRecord::Base
   accepts_nested_attributes_for :interests
 
   def self.import(file)
+    # Look at this:
+    #   http://railscasts.com/episodes/396-importing-csv-and-excel
+    #   http://csv-mapper.rubyforge.org/
     CSV.foreach(file.path, headers: true) do |row|
       puts row.to_hash
       Contact.create! row.to_hash
