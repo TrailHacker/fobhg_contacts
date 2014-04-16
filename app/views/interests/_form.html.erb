@@ -1,0 +1,12 @@
+<%= simple_form_for(@interest) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :description, :as => :text, :input_html => { :rows => 10 } %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => "btn btn-success" %>
+  </div>
+<% end %>

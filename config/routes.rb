@@ -1,5 +1,7 @@
 FobhgContacts::Application.routes.draw do
 
+  resources :interests
+
   resources :newsletters
 
   devise_for :users, :controllers => {:registrations => "registrations"}
