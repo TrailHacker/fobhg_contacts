@@ -32,6 +32,9 @@ class ContactsController < ApplicationController
   # POST /contacts.json
   def create
     @contact = Contact.new(contact_params)
+    params["interest_ids"].each do |id| 
+      @contact.interests << Interest.find(id)
+    end
 
     respond_to do |format|
       if @contact.save

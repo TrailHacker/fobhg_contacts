@@ -11,6 +11,7 @@
     <%= f.input :zip %>
     <%= f.input :phone_number %>
     <%= f.input :email_address %>
+    <%= f.association :interests, :collection => Interest.all(:order => "name"), :as => :check_boxes %>
   </div>
 
   <div class="form-actions pull-right">

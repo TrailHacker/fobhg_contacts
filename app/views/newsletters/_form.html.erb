@@ -4,6 +4,7 @@
   <div class="form-inputs">
     <%= f.input :subject %>
     <%= f.input :body, :as => :text, :input_html => { :rows => 20 } %>
+    <%= f.association :interests, :collection => Interest.all(:order => "name"), :as => :check_boxes %>
   </div>
 
   <div class="form-actions">
