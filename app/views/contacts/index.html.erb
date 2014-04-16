@@ -37,9 +37,9 @@
         <td><%= contact.zip %></td>
         <td><%= contact.phone_number %></td>
         <td><%= contact.email_address %></td>
-        <td><%= link_to 'Show', contact %></td>
-        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-        <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', contact, :class => "btn btn-primary btn-xs" %></td>
+        <td><%= link_to 'Edit', edit_contact_path(contact), :class => "btn btn-success btn-xs" %></td>
+        <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-xs" %></td>
       </tr>
     <% end %>
   </tbody>

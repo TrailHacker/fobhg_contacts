@@ -36,5 +36,5 @@
   <strong>Email address:</strong> <%= @contact.email_address %>
 </p>
 
-<%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+<%= link_to 'Edit', edit_contact_path(@contact), :class => "btn btn-success" %> 
+<%= link_to 'Back', contacts_path, :class => "btn btn-primary" %>

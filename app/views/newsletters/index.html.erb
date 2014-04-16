@@ -1,4 +1,4 @@
-<h1>Listing newsletters</h1>
+<h1>Listing Newsletters</h1>
 
 <table>
   <thead>
@@ -16,9 +16,9 @@
       <tr>
         <td><%= newsletter.subject %></td>
         <td><%= newsletter.body %></td>
-        <td><%= link_to 'Show', newsletter %></td>
-        <td><%= link_to 'Edit', edit_newsletter_path(newsletter) %></td>
-        <td><%= link_to 'Destroy', newsletter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', newsletter, :class => "btn btn-default btn-xs" %></td>
+        <td><%= link_to 'Edit', edit_newsletter_path(newsletter), :class => "btn btn-success btn-xs" %></td>
+        <td><%= link_to 'Destroy', newsletter, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-xs" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Newsletter', new_newsletter_path %>
+<%= link_to 'New Newsletter', new_newsletter_path, :class => "btn btn-success" %>

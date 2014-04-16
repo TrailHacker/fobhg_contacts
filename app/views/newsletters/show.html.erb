@@ -10,5 +10,5 @@
   <%= @newsletter.body %>
 </p>
 
-<%= link_to 'Edit', edit_newsletter_path(@newsletter) %> |
-<%= link_to 'Back', newsletters_path %>
+<%= link_to 'Edit', edit_newsletter_path(@newsletter), :class => "btn btn-success" %> 
+<%= link_to 'Back', newsletters_path, :class => "btn btn-default" %>
