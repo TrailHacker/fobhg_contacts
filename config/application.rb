@@ -10,6 +10,8 @@ Bundler.require(:default, Rails.env)
 module FobhgContacts
   class Application < Rails::Application
 
+    config.action_mailer.default_url_options = { host: 'fobhg.org' }
+    
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
       
