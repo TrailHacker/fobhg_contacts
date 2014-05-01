@@ -8,7 +8,7 @@ class Contact < ActiveRecord::Base
     #   http://csv-mapper.rubyforge.org/
     CSV.foreach(file.path, headers: true) do |row|
       puts row.to_hash
-      Contact.create! row.to_hash
+      contact = Contact.create!(row.to_hash)
     end
   end
 end

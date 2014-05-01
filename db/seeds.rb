@@ -17,3 +17,5 @@ user = User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => EN
 puts 'user: ' << user.name
 user.confirm!
 user.add_role :admin
+
+Interest.create([{:name => "Trail Maintenance", :description => "Build and maintain trails within Blackhand Gorge."},{:name => "Cabin Restoration", :description => "Random improvements to the cabin near the Toboso entrance."},{:name => "Trail Race", :description => "Receive notifications of training runs and race details."}, {:name => "Events", :description => "Receive notifications of upcoming events at Blackhand Gorge"}])
