@@ -1,8 +1,8 @@
 class CreateContactsInterests < ActiveRecord::Migration
   def change
-    create_table :contacts_interests do |t|
-      t.integer :contact_id
-      t.integer :interest_id
+    create_table(:contacts_interests, :id => false) do |t|
+      t.references :contact
+      t.references :interest
     end
   end
 end
