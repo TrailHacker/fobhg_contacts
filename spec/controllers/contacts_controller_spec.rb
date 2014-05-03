@@ -13,6 +13,12 @@ describe ContactsController do
   # ContactsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  before(:each) do
+    @user = FactoryGirl.create(:user)
+    @user.confirm!
+    sign_in @user
+  end
+
   describe "GET index" do
     it "assigns all contacts as @contacts" do
       contact = Contact.create! valid_attributes

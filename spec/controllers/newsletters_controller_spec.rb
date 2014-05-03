@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe NewslettersController do
 
+  before(:each) do
+    @user = FactoryGirl.create(:user)
+    @user.confirm!
+    sign_in @user
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Newsletter. As you add validations to Newsletter, be sure to
   # adjust the attributes here as well.

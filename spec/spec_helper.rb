@@ -48,4 +48,8 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  def sign_in(user)
+    post_via_redirect new_user_session_path, "user[email]" => user.email, "user[password]" => user.password
+  end
 end
