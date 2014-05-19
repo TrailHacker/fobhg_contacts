@@ -7,7 +7,6 @@ class Contact < ActiveRecord::Base
     #   http://railscasts.com/episodes/396-importing-csv-and-excel
     #   http://csv-mapper.rubyforge.org/
     CSV.foreach(file.path, headers: true) do |row|
-      puts row.to_hash
       contact = Contact.create!(row.to_hash)
     end
   end
